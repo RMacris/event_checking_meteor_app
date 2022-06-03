@@ -6,4 +6,5 @@ Meteor.startup(() => {
   loadInitialData();
 
   // YOU CAN DO WHATEVER YOU WANT HERE
+  
 });
