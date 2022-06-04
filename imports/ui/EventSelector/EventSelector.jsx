@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { Select } from '@mantine/core';
 import { MeteorsNames } from '../../infra/publish-names';
 
-export default function EventSelector() {
+export const EventSelector = () => {
 
     const communities = useTracker(() => {
         Meteor.subscribe(MeteorsNames.GetAllCommunities)

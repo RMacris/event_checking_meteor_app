@@ -1,0 +1,17 @@
+
+body {
+    --text-dark-color: #000;
+    --text-primary-color: #333;
+    --text-secondary-color: #666;
+    --text-shallow-color: #999;
+
+    --text-smallest-size: 0.8rem;
+    --text-smmller-size: 0.85rem;
+    --text-small-size: 0.9rem;
+    --text-normal-size: 1rem;
+    --text-big-size: 1.1rem;
+    --text-bigger-size: 1.2rem;
+    --text-biggest-size: 1.3rem;
+
+    --text-highlight-color: #007CC2;
+}

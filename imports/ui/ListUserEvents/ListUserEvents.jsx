@@ -5,17 +5,19 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { List } from '@mantine/core';
 import { People } from '../../collections/people';
 import { ListContent } from '../ListContent/ListContent'
-export const ListUserEvents = (props) => {
+import { useDataContext } from '../../Context/context';
+export const ListUserEvents = () => {
 
+  const {data, setData} = useDataContext()
   const eventUsers = useTracker(() => {
-      Meteor.subscribe(MeteorsNames.GetRegisteredUsersInCommunity, {communityID: props.communityID})
+      Meteor.subscribe(MeteorsNames.GetRegisteredUsersInCommunity, {communityID: data.currentSelectedEvent })
       const result = People.find().fetch()
-      console.log(result)
       return result
   })
+
   return (
     <div>
-        <List>
+        <List >
             {eventUsers.map(user => 
                 <List.Item key={user._id}> 
                     <ListContent data={user}></ListContent> 

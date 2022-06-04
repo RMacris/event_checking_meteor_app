@@ -3,6 +3,7 @@ import { Communities } from '../imports/collections/communities';
 import { People } from '../imports/collections/people';
 import { loadInitialData } from '../imports/infra/initial-data';
 import { MeteorsNames } from '../imports/infra/publish-names'
+
 Meteor.startup(() => {
   // DON'T CHANGE THE NEXT LINE
   loadInitialData();

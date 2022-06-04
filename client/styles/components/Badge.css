@@ -1,0 +1,23 @@
+.badge{ 
+    display: inline-flex;
+    flex-direction: row ;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 16px;
+    background-color: rgba(231, 245, 255, 1);
+    cursor: default;
+    margin: 8px 4px 0 0;
+}
+.badge:hover{ 
+    background-color: rgb(204, 231, 252);
+}
+.badge > :first-child{  
+    text-align: center;
+    color: #228be6;   
+    font-size: var(--text-small-size);
+    font-weight: 600;
+}
+.badge > :last-child {
+    margin-left: 8px ;
+}

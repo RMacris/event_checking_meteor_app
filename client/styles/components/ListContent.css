@@ -1,0 +1,55 @@
+
+.sticker {
+    display: inline-flex;
+    box-shadow: 0px 1px 2px 0px rgba(100,100,100,0.5);
+    justify-content: center;
+    padding: 8px 16px;
+    width: 700px;
+    border-radius: 4px;
+}
+
+.user_name{ 
+    font-size: var(--text-normal-size);
+    color: var(--text-primary-color);
+}
+    
+.user_title{ 
+    max-width: 320px;
+    font-size: var(--text-normal-size);
+    color: var(--text-secondary-color);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.user_title:hover{
+    white-space: normal;
+    height:auto;  /* just added this line */
+}
+
+.check_label{
+    margin-right: 8px;
+    font-size: var(--text-small-size);
+    color: var(--text-secondary-color);
+
+}
+.check_time{ 
+    font-size: var(--text-small-size);
+    color: var(--text-shallow-color);
+
+}
+.button_margin {
+    margin: 0 24px 0 auto;
+    width: 110px;
+}
+.--no-gap{ 
+    gap: 0;
+}
+
+.--vertical-margin{ 
+    margin-top: 4px;
+}
+.--horizontal-margin{ 
+    margin-left: 16px;
+    margin-right: 16px;
+}
+

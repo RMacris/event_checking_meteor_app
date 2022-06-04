@@ -1,0 +1,12 @@
+
+.event_info_container {
+    display: inline-flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px 16px;
+    box-shadow: 0 0 4px 0px rgba(100, 100, 100, 0.4);
+    border-radius: 4px  ;
+    width: min-content;
+    width: 25%;
+}
