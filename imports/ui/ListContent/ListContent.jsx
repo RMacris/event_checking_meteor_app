@@ -1,7 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react';
 import { Group, Button } from '@mantine/core';
-export const ListContent = ({data}) => {
+import { Event } from '../../collections/event';
+import { useTracker } from 'meteor/react-meteor-data';
+
+
+export const ListContent = ({data, onCheck}) => {
     const [isChecked, setIsChecked] = useState(false)
+
+
+    function handleCheck() {
+        const newState = !isChecked
+        setIsChecked(newState)
+        onCheck(newState, data)
+        
+    }
 
     return (
         <Group className='sticker' mt="xs">
@@ -30,8 +42,8 @@ export const ListContent = ({data}) => {
             </Group>
             {
             isChecked 
-            ? <Button className='button_margin' variant="gradient" onClick={() => setIsChecked(false)} gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}>Check-Out</Button>
-            : <Button className='button_margin' variant="gradient" onClick={() => setIsChecked(true)} gradient={{ from: 'indigo', to: 'cyan' }}>Check-In</Button>
+            ? <Button className='button_margin' variant="gradient" onClick={() => handleCheck()} gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}>Check-Out</Button>
+            : <Button className='button_margin' variant="gradient" onClick={() => handleCheck()} gradient={{ from: 'indigo', to: 'cyan' }}>Check-In</Button>
             }
             
             
