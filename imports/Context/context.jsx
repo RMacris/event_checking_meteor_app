@@ -10,7 +10,8 @@ const DataContex = React.createContext({
   data:{
     currentSelectedEvent: '',
     eventUsers: [],
-    selectedFilters: []
+    communityUsers: [],
+
   },
   setData: () => {}
 })
@@ -24,23 +25,12 @@ export const DataProvider = ({children}) => {
   const [data, setData] = useState({
     currentSelectedEvent: '',
     eventUsers: [],
-    selectedFilters: [],
-    eventList:[]
+    communityUsers: [],
 
   })
   const value = { data, setData}
 
 
-  useEffect(() =>  {
-    setData({
-      currentSelectedEvent: '',
-      eventUsers: [],
-      selectedFilters: [],
-      eventList: []
-    }) 
-
-
-  }, [])
 
   return (
     <DataContex.Provider value={value}>

@@ -1,12 +1,14 @@
 
 .sticker {
+    position: relative;
     display: inline-flex;
     box-shadow: 0px 1px 2px 0px rgba(100,100,100,0.5);
     justify-content: center;
     padding: 8px 16px;
-    width: 700px;
+    width: 100%;
     border-radius: 4px;
-    
+    transition: all;
+    overflow: hidden;
 }
 
 .sticker:hover { 
@@ -58,3 +60,34 @@
     margin-right: 16px;
 }
 
+.waiting-feedback {
+    position: absolute;
+    display: none;
+    top:0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, #FFFFFF00 34.61%, rgba(43, 147, 191, 0.25) 69.4%,  #FFFFFF00 );
+    background-size: 100% 100%;
+    animation: gradient 2s ease-in alternate infinite;
+    visibility: hidden;
+    
+}
+.--waiting {
+    display: flex;
+    visibility: visible;
+    pointer-events: none;
+}
+
+
+@keyframes gradient {
+	0% {
+		left:-100%;
+	}
+    50% {
+        left: 100%;
+    }
+    100%{
+        left: -100%;
+    }
+}

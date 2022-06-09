@@ -6,34 +6,50 @@ import { loadInitialData } from '../imports/infra/initial-data';
 import { MeteorsNames } from '../imports/infra/publish-names'
 
 Meteor.methods({
-  setUserEventStatus({userId, eventId}) {
-    const user = Event.findOne({_id: userData._id})
-    const data = {
-      
-      checkedInTime: '',
-      checkedOutTime: ''
-    }
-    if(user != undefined){
-      const isCheckingIn = isChecking == true
+  setUserEventStatus({userId, communityId}) {
+    const eventUser = Event.findOne({userId: userId})
+    if(eventUser != undefined){
+      const isCheckingIn = eventUser.checkState === false
       if(isCheckingIn) {
         //reset the checking time data since it will be in a new event
-        Event.update({userId:userId, eventId:eventId},{ $set:{
-          checkingState: true
+        Event.update({userId:userId, communityId:communityId},
+          { 
+            $set:{
+              checkedInTime: moment.now(),
+              checkedOutTime: '',
+              checkState: true
         }})
       }
       else{
         //simply check-out the user
-        Event.update({userId: userId, eventId: eventId},{ $set:{
-          checkingState: false, 
-          checkedOutTime: ''
+        Event.update({userId: userId, communityId: communityId},
+          { 
+            $set:{
+              checkedOutTime: moment.now(),
+              checkState: false
         }})
       }
-    }
+    } 
     else{
       // case the record of the user doesn't exist in the event, create a new record 
       // assign a checking time.
-      Event.insert({userId:userId, eventId:eventId, checkedInTime: '' , checkedOutTime: '', checked: true})
+      Event.insert({ userId: userId, communityId:communityId, checkedInTime: moment.now() , checkedOutTime: '', checkState: true})
     }
+  },
+  getPeopleInCommunity ({ communityId }) {
+    if(communityId === '') return []
+    const result = People.find({communityId: communityId}).fetch()
+    return result
+  },
+  getPeopleInEvent({communityId}) {
+    if(communityId === '') return []
+    const result = Event.find({communityId: communityId}).fetch()
+    return result
+  },
+  getPersonInEvent({userId, communityId}) {
+    if(communityId === '' && communityId === '') return []
+    const result = Event.find({userId: userId, communityId: communityId}).fetch()
+    return result
   }
 })
 
@@ -51,14 +67,16 @@ Meteor.startup(() => {
   });
   
 });
-Meteor.publish(MeteorsNames.GetRegisteredUsersInCommunity, ({ communityID, page=1, limit=10 }) => { 
-  return People.find({communityId: communityID}, {
-    skip: (page*limit),
-    limit: limit
-  })
-})
+
 Meteor.publish(MeteorsNames.GetAllCommunities, () => { 
   return Communities.find()
+})
+Meteor.publish(MeteorsNames.GetRegisteredUsersInCommunity, ({ communityId }) => { 
+  return People.find({communityId: communityId})
+})
+Meteor.publish(MeteorsNames.GetUserEventInfo, ({ communityId }) => { 
+  const communityUserInEventStatus = Event.find({communityId: communityId})
+  return communityUserInEventStatus
 })
 
 

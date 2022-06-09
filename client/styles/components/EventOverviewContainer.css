@@ -1,0 +1,17 @@
+.badge_container{ 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px 0px;
+}
+.event_overview_info > * {
+    margin-top: 10px;
+    font-size: var(--text-small-size);
+    color: var(--text-secondary-color);
+}
+.event_overview_info > * > * {
+    color: var(--text-dark-color);
+}
+.event_badge_info{
+    margin-top: 24px
+}

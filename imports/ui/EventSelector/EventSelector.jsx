@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useTracker } from 'meteor/react-meteor-data';
 import { Communities } from '../../collections/communities';
 import { Meteor } from 'meteor/meteor';

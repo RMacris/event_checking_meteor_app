@@ -7,6 +7,10 @@
     padding: 10px 16px;
     box-shadow: 0 0 4px 0px rgba(100, 100, 100, 0.4);
     border-radius: 4px  ;
-    width: min-content;
     min-width: 25%;
+}
+
+.info_conta iner-header{
+    position: sticky;
+    top: 20px;
 }
